@@ -246,3 +246,7 @@ std::string OrderBook::to_string() const {
     }
     return oss.str();
 }
+
+void OrderBook::cleanup_empty_price_level(Price price, Side side) {
+    remove_empty_price_level(price, side);
+}

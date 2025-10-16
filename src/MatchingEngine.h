@@ -20,12 +20,13 @@ private:
     OrderBookMap order_books_;
     TradeList executed_trades_;
     TradeId next_trade_id_;
-    OrderBook* get_or_create_order_book(const Symbol& symbol);
+    Timestamp current_timestamp_;
+    OrderBook* create_order_book(const Symbol& symbol);
     OrderBook* find_order_book(const Symbol& symbol);
     TradeList match_order(Order* order, OrderBook* order_book);
-    Trade create_trade(Order* buy_order, Order* sell_order, Price price, Quantity quantity, Side aggressor);
+    Trade create_trade(Order* buy_order, Order* sell_order, Price price, Quantity quantity);
     Timestamp get_current_timestamp() const;
-    Side determine_aggressor(Order* incoming_order) const;
+    static Side determine_aggressor(Order* incoming_order) const;
 public:
     MatchingEngine();
     TradeList submit_order(Order* order);

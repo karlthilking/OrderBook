@@ -35,4 +35,5 @@ public:
     std::queue<Order*>* get_best_orders(Side incoming_side);
     bool is_valid_order(const Order& order) const;
     std::string to_string() const;
+    void cleanup_empty_price_level(Price price, Side side);
 };
